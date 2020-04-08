@@ -1,5 +1,5 @@
 const request=url=>{
-  wx:showLoading({
+  wx.showLoading({
     titlw:'加载中'
   })
   return new Promise((resolve,reject)=>{

@@ -1,4 +1,25 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <view class="container">
-<view wx:for="{{}}"></view>
+  <view wx:for="{{goods}}" wx:for-index="id" wx:for-item="item">
+    <view>
+      <!-- 商品图片 -->
+      <image src="{{item.thumb}}" />
+    </view>
+    <view>
+      <!-- 商品名称 -->
+      <view>{{item.title}}</view>
+      <!-- 商品价格 -->
+      <view>{{item.price}}</view>
+      <!-- 时间以及讨论 -->
+      <view>
+        <view>{{item.time}}</view>
+        <view>
+          <image src="../../assets/icons/comment.png" />
+          <text>{{item.comment}}</text>
+          <image src="../../assets/icons/value.png" />
+          <text>{{item.value}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
