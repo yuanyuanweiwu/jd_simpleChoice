@@ -1,25 +1,23 @@
 <!-- index.wxml -->
-<view class="container">
-  <view wx:for="{{goods}}" wx:for-index="id" wx:for-item="item">
-    <view>
+  <view wx:for="{{goods}}" wx:for-index="id" wx:for-item="item" class="contain" >
+    <view class="mediabox_left">
       <!-- 商品图片 -->
-      <image src="{{item.thumb}}" />
+      <image src="{{item.thumb}}" class="mediabox_thumb" />
     </view>
-    <view>
+    <view class="mediabox_right">
       <!-- 商品名称 -->
-      <view>{{item.title}}</view>
+      <view class="mediabox_title">{{item.title}}</view>
       <!-- 商品价格 -->
-      <view>{{item.price}}</view>
+      <view class="mediabox_price">{{item.price}}</view>
       <!-- 时间以及讨论 -->
-      <view>
-        <view>{{item.time}}</view>
-        <view>
-          <image src="../../assets/icons/comment.png" />
+      <view class="mediabox_details">
+        <view class="mediabox_time">{{item.time}}</view>
+        <view class="mediabox_desc">
+          <image src="../../assets/icons/comment.png" class="comment_image"/>
           <text>{{item.comment}}</text>
-          <image src="../../assets/icons/value.png" />
+          <image src="../../assets/icons/value.png" class="value_image"/>
           <text>{{item.value}}</text>
         </view>
       </view>
     </view>
   </view>
-</view>
