@@ -1,4 +1,10 @@
 <view class="explore_container">
-
+  <view class="navigator">
+      <scroll-view scroll-x="true" scroll-with-animation="true" scroll-left="{{navScrollLeft}}" class="nav">
+      <view wx:for="{{navData}}" wx:for-index='id' wx:for-item='item' class="nav-item {{currentTab == id?'active':''}}"  data-name="{{item.name}}" data-current="{{id}}">
+          {{item.name}}
+      </view>
+  </scroll-view>
+  </view>
     
 </view>
