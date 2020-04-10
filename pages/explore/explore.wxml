@@ -1,2 +1,4 @@
-<!--pages/explore/explore.wxml-->
-<text>pages/explore/explore.wxml</text>
+<view class="explore_container">
+
+    
+</view>
