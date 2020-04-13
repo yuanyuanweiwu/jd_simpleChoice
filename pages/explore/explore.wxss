@@ -1,6 +1,8 @@
+@import  '../../style/picturecard.wxss';
 page {
   width: 100%;
   height: 100%;
+  background-color: #ededed;
 }
 .explore_container {
   width: 100%;
@@ -17,11 +19,28 @@ page {
   z-index: 999;
 }
 .explore_container .navigator .nav {
-  height: 105rpx;
+  line-height: 105rpx;
 }
 .explore_container .navigator .nav .nav-item {
   display: inline-block;
   margin-left: 20rpx;
   margin-right: 20rpx;
   text-align: center;
+}
+.explore_container .navigator .nav .active {
+  border-bottom: 3px solid #DE554F;
+}
+.explore_container .explore_content .contain:first-child {
+  margin-top: 15rpx;
+}
+.explore_container .explore_content .contain:last-child {
+  margin-bottom: 15rpx;
+}
+.explore_container .no_goods {
+  width: 100%;
+  height: 100%;
+}
+.explore_container .no_goods image {
+  width: 100%;
+  height: 100%;
 }

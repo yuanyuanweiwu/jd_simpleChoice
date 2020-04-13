@@ -1,8 +1,7 @@
 // pages/explore/explore.js
-import util from '../../utils/util'
-import servicePath from './../../utils/config';
+import util from "../../utils/util";
+import servicePath from "./../../utils/config";
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -11,49 +10,24 @@ Page({
     currData: [], // 当前分类下商品
     currentTab: 0,
     navScrollLeft: 0,
-    category: '0', // 默认导航显示全部
+    category: "0", // 默认导航显示全部
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-     util.request(servicePath.explorePage).then(res=>{
-        const navData=res.data.navData
-        console.log(navData)
-        this.setData({
-          navData
-        })
-     })
-     util.request(servicePath.goodsPage)
-     .then(res => {
-         this.setData({
-             goods: res.data.goods,
-             currData: res.data.goods
-         })
-     })
-
-
-  },
-
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    wx.showToast({
-      title: "刷新完成",
-      icon: "success",
-      duration: 1500,
+    util.request(servicePath.explorePage).then((res) => {
+      const navData = res.data.navData;
+      this.setData({
+        navData,
+      });
+    });
+    util.request(servicePath.goodsPage).then((res) => {
+      this.setData({
+        goods: res.data.goods,
+        currData: res.data.goods,
+      });
     });
   },
 
@@ -79,5 +53,23 @@ Page({
         console.log("success");
       },
     };
-  }
-})
+  },
+
+  scrollViewClick: function (e) {
+    let current = e.target.dataset.current;
+    let currData = [];
+    if (current == 0) {
+      currData = this.data.goods;
+    } else {
+      this.data.goods.forEach((element) => {
+        if (element.category === current.toString()) {
+          currData.push(element);
+        }
+      })
+    }
+    this.setData({
+      currentTab:current,
+      currData
+    })
+  },
+});
