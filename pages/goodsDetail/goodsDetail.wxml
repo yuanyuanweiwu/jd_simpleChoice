@@ -1,0 +1,48 @@
+<view class='goodDetail_container'>
+  <view class='goodDetail_img'>
+    <image src="{{goods.thumb}}" />
+  </view>
+  <view class='goodDetail_content'>
+    <view class='content_abstract'>
+      <view class='content_contributor'>
+        {{goods.time}}|{{goods.contributor}}
+      </view>
+
+      <view class='content_title'>
+        {{goods.title}}
+      </view>
+      <view class='content_price'>
+        {{goods.price}}
+      </view>
+    </view>
+    <view class='content_detail'>
+      <view wx:if="{{goods.emphasis != ''}}" class="content_emphasis">{{item.emphasis}}</view>
+      <text class="content_detail">{{goods.content}}</text>
+    </view>
+  </view>
+  <view class='goodDetai_comment' wx:if="{{comments.length>0}}">
+    <view class='comment-title'>
+      热门评论
+    </view>
+    <view class='comment_content' wx:for="{{comments}}" wx:for-item='item' wx:key="_id" wx:for-index="_id">
+      <view class="avatar">
+        <image class="comment-avatar" src="{{item.avatar}}" />
+      </view>
+      <view class="comment-desc">
+        <view class="comment-name">
+          {{item.name}}
+          <text class="comment-flag">TOP{{item.flag}}</text>
+        </view>
+        <view class="comment-time">{{item.time}}</view>
+        <view class="comment-content">{{item.content}}</view>
+      </view>
+    </view>
+    <view class='comment_showAll'>
+      查看全部评论
+      <image class="all_icon" src="../../assets/icons/detail.png" />
+    </view>
+  </view>
+  <view class='goodDetail_jd'>
+    <button bindtap="defaultTap">前往京东</button>
+  </view>
+</view>

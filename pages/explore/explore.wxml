@@ -7,7 +7,7 @@
     </scroll-view>
   </view>
   <view wx:if="{{currData.length>0}}" class="explore_content">
-     <view wx:for="{{currData}}" wx:for-index="id" wx:for-item="item" class="contain" wx:key="id">
+     <view wx:for="{{currData}}" wx:for-index="id" wx:for-item="item" class="contain" wx:key="id" bindtap="goDetail" dat-id="{{item_id}}">
     <view class="mediabox_left">
       <!-- 商品图片 -->
       <image src="{{item.thumb}}" class="mediabox_thumb" />

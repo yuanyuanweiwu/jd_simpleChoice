@@ -4,14 +4,15 @@
     "pages/logs/logs",
     "pages/explore/explore",
     "pages/shopCart/shopCart",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/goodsDetail/goodsDetail"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#DE554F",
     "navigationBarTitleText": "值得买京东优选",
-    "navigationBarTextStyle": "white",
+    "navigationBarTextStyle": "black",
     "enablePullDownRefresh": false
   },
   "tabBar": {

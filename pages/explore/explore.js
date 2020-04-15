@@ -72,4 +72,17 @@ Page({
       currData
     })
   },
+  goDetail(e){
+    let id=e.currentTarget.dataset.id
+     wx.navigateTo({
+       url: '../goodsDetail/goodsDetail?id='+id,
+       success: (result)=>{
+        //console.log("goodsDetail跳转成功");
+       },
+       fail: ()=>{
+        console.log("goodsDetail跳转失败");
+       },
+       complete: ()=>{}
+     });
+  }
 });
