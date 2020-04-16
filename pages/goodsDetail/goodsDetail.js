@@ -33,7 +33,7 @@ Page({
       goods.content = goods.content
         .replace(/(。)/g, "。\n\n")
         .replace(/(~)/g, "~\n\n");
-
+      console.log(goods)
       this.setData({
         id,
         goods,

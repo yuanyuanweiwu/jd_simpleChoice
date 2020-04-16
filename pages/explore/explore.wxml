@@ -1,37 +1,37 @@
 <view class="explore_container">
   <view class="navigator">
-      <scroll-view scroll-x="true" scroll-with-animation="true" scroll-left="{{navScrollLeft}}" class="nav">
-      <view wx:for="{{navData}}" wx:for-index='id' wx:key="id" wx:for-item='item' class="nav-item {{currentTab == id?'active':''}}"  data-name="{{item.name}}" data-current="{{id}}" bindtap="scrollViewClick">
-          {{item.name}}
+    <scroll-view scroll-x="true" scroll-with-animation="true" scroll-left="{{navScrollLeft}}" class="nav">
+      <view wx:for="{{navData}}" wx:for-index='id' wx:key="id" wx:for-item='item' class="nav-item {{currentTab == id?'active':''}}" data-name="{{item.name}}" data-current="{{id}}" bindtap="scrollViewClick">
+        {{item.name}}
       </view>
     </scroll-view>
   </view>
   <view wx:if="{{currData.length>0}}" class="explore_content">
-     <view wx:for="{{currData}}" wx:for-index="id" wx:for-item="item" class="contain" wx:key="id" bindtap="goDetail" dat-id="{{item_id}}">
-    <view class="mediabox_left">
-      <!-- 商品图片 -->
-      <image src="{{item.thumb}}" class="mediabox_thumb" />
-    </view>
-    <view class="mediabox_right">
-      <!-- 商品名称 -->
-      <view class="mediabox_title">{{item.title}}</view>
-      <!-- 商品价格 -->
-      <view class="mediabox_price">{{item.price}}</view>
-      <!-- 时间以及讨论 -->
-      <view class="mediabox_details">
-        <view class="mediabox_time">{{item.time}}</view>
-        <view class="mediabox_desc">
-          <image src="../../assets/icons/comment.png" class="comment_image"/>
-          <text>{{item.comment}}</text>
-          <image src="../../assets/icons/value.png" class="value_image"/>
-          <text>{{item.value}}</text>
+    <view wx:for="{{currData}}" wx:for-index="id" wx:for-item="item" class="contain" wx:key="id" bindtap="goDetail" data-id="{{item._id}}">
+      <view class="mediabox_left">
+        <!-- 商品图片 -->
+        <image src="{{item.thumb}}" class="mediabox_thumb" />
+      </view>
+      <view class="mediabox_right">
+        <!-- 商品名称 -->
+        <view class="mediabox_title">{{item.title}}</view>
+        <!-- 商品价格 -->
+        <view class="mediabox_price">{{item.price}}</view>
+        <!-- 时间以及讨论 -->
+        <view class="mediabox_details">
+          <view class="mediabox_time">{{item.time}}</view>
+          <view class="mediabox_desc">
+            <image src="../../assets/icons/comment.png" class="comment_image" />
+            <text>{{item.comment}}</text>
+            <image src="../../assets/icons/value.png" class="value_image" />
+            <text>{{item.value}}</text>
+          </view>
         </view>
       </view>
     </view>
   </view>
-  </view>
   <view wx:else class="no_goods">
-      <image class="no_pic" src="../../assets/images/no_goods.png"></image>
+    <image class="no_pic" src="../../assets/images/no_goods.png"></image>
   </view>
-    
+
 </view>

@@ -1,0 +1,41 @@
+.goodDetail_comment {
+  padding: 0 15rpx;
+}
+.goodDetail_comment .comment-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 30rpx;
+  padding: 15rpx 0;
+}
+.goodDetail_comment .comment_content {
+  padding-bottom: 15rpx;
+  display: flex;
+  border-bottom: 1rpx solid #ededed;
+}
+.goodDetail_comment .comment_content .avatar {
+  padding: 17rpx 10rpx 0 0;
+}
+.goodDetail_comment .comment_content .avatar .comment-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.goodDetail_comment .comment_content .comment-desc {
+  flex: 2;
+}
+.goodDetail_comment .comment_content .comment-desc .comment-title {
+  font-size: 22rpx;
+  display: flex;
+  color: #c9c5c5;
+  justify-content: space-between;
+}
+.goodDetail_comment .comment_showAll {
+  padding: 20rpx 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.goodDetail_comment .comment_showAll .all_icon {
+  width: 24rpx;
+  height: 24rpx;
+}

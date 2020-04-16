@@ -5,7 +5,7 @@
   <view class='goodDetail_content'>
     <view class='content_abstract'>
       <view class='content_contributor'>
-        {{goods.time}}|{{goods.contributor}}
+        {{goods.time}}|爆料人:{{goods.contributor}}
       </view>
 
       <view class='content_title'>
@@ -16,11 +16,11 @@
       </view>
     </view>
     <view class='content_detail'>
-      <view wx:if="{{goods.emphasis != ''}}" class="content_emphasis">{{item.emphasis}}</view>
+      <view wx:if="{{goods.emphasis != ''}}" class="content_emphasis">{{goods.emphasis}}</view>
       <text class="content_detail">{{goods.content}}</text>
     </view>
   </view>
-  <view class='goodDetai_comment' wx:if="{{comments.length>0}}">
+  <view class='goodDetail_comment' wx:if="{{comments.length>0}}">
     <view class='comment-title'>
       热门评论
     </view>
@@ -29,11 +29,13 @@
         <image class="comment-avatar" src="{{item.avatar}}" />
       </view>
       <view class="comment-desc">
-        <view class="comment-name">
-          {{item.name}}
-          <text class="comment-flag">TOP{{item.flag}}</text>
+        <view class="comment-title">
+          <view class="comment-name">
+            {{item.name}}
+            <text class="comment-flag">TOP{{item.flag}}</text>
+          </view>
+          <view class="comment-time">{{item.time}}</view>
         </view>
-        <view class="comment-time">{{item.time}}</view>
         <view class="comment-content">{{item.content}}</view>
       </view>
     </view>
@@ -42,7 +44,10 @@
       <image class="all_icon" src="../../assets/icons/detail.png" />
     </view>
   </view>
-  <view class='goodDetail_jd'>
-    <button bindtap="defaultTap">前往京东</button>
+  <view wx:else class="no-cpmment">
+    
   </view>
-</view>
+</view> 
+<view class='goodDetail_jd'>
+    <text bindtap="defaultTap"  class="go">前往京东</text>
+  </view>
