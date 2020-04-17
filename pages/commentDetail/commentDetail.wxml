@@ -1,0 +1,18 @@
+<view class='goodDetail_comment' wx:if="{{comments.length>0}}">
+    <view class='comment_content' wx:for="{{comments}}" wx:for-item='item' wx:key="_id" wx:for-index="_id">
+      <view class="avatar">
+        <image class="comment-avatar" src="{{item.avatar}}" />
+      </view>
+      <view class="comment-desc">
+        <view class="comment-title">
+          <view class="comment-name">
+            {{item.name}}
+            <text class="comment-flag">TOP{{item.flag}}</text>
+          </view>
+          <view class="comment-time">{{item.time}}</view>
+        </view>
+        <view class="comment-content">{{item.content}}</view>
+      </view>
+    </view>
+  </view>
+  

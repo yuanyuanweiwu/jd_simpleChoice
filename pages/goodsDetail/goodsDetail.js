@@ -30,6 +30,11 @@ Page({
           comments.push(item);
         }
       });
+      wx.setStorage({
+        key: 'comments',
+        data: comments,
+
+      });
       goods.content = goods.content
         .replace(/(。)/g, "。\n\n")
         .replace(/(~)/g, "~\n\n");
@@ -42,6 +47,16 @@ Page({
     });
   },
 
+  goComments:function () {
+    wx.navigateTo({
+      url: '../commentDetail/commentDetail',
+      success: (result)=>{
+        
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
   /**
    * 用户点击右上角分享
    */
