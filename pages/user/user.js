@@ -1,66 +1,126 @@
-// pages/user/user.js
-Page({
+import servicePath from "./../../utils/config";
+import util from "./../../utils/util";
 
+const loginCacheKey = "Login:Flag";
+Page({
   /**
    * 页面的初始数据
    */
   data: {
-
+    loginFlag: 0,
+    tag: "登录/注册",
+    bean: 0,
+    options: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    util.request(servicePath.userPage).then((res) => {
+      this.setData({
+        options: res.data.optionData,
+      });
+    });
 
+    this.setData({
+      loginFlag: wx.getStorageSync(loginCacheKey) || 0,
+    });
+    if (this.data.loginFlag) {
+      this.setData({
+        tag: wx.getStorageSync("user").nickName,
+      });
+    } else {
+      this.setData({
+        tag: "登录/注册",
+      });
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  login() {
+    if (this.data.loginFlag === 0) {
+      wx.navigateTo({
+        url: "../login/login?prev=user",
+      });
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  logout() {
+    wx.setStorage({
+      key: loginCacheKey,
+      data: 0,
+    });
+    wx.setStorage({
+      key: "user",
+      data: {},
+    });
+    this.setData({
+      loginFlag:0,
+      tag: "登录/注册",
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  showAbout() {
+    // 跳转关于界面
+    wx.navigateTo({
+      url: "../about/about",
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  showFeedback() {
+    // 跳转反馈界面
+    wx.navigateTo({
+      url: "../feedback/feedback",
+    });
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  showAppointment() {
+    // 跳转预约界面
+    if (this.data.loginFlag === 0) {
+      wx.navigateTo({
+        url: "../login/login?prev=appointment",
+      });
+    } else {
+      wx.navigateTo({
+        url: "../appointment/appointment",
+      });
+    }
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  showDiscount() {
+    // 跳转优惠券界面
+    if (this.data.loginFlag === 0) {
+      wx.navigateTo({
+        url: "../login/login?prev=discount",
+      });
+    } else {
+      wx.navigateTo({
+        url: "../discount/discount",
+      });
+    }
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
-})
+  showOptions(e) {
+    // 跳转账户选项界面
+    let index = e.currentTarget.dataset.index;
+    console.log(index);
+    if (this.data.loginFlag === 0) {
+      wx.navigateTo({
+        url: "../login/login?prev=account",
+      });
+    } else if (index === 3) {
+      wx.navigateTo({
+        url: "../service/service",
+      });
+    } else {
+      index = index + 1;
+      if (index > 3) {
+        index = 0;
+      }
+      // 使用storage携带index给下一个界面，否则无法在加载时渲染数据
+      wx.setStorage({
+        key: "account:index",
+        data: index,
+      });
+      wx.navigateTo({
+        url: "../account/account?index=" + index,
+      });
+    }
+  },
+  onShow() {
+    this.onLoad();
+  },
+});

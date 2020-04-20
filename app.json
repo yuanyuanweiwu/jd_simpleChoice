@@ -6,7 +6,8 @@
     "pages/shopCart/shopCart",
     "pages/user/user",
     "pages/goodsDetail/goodsDetail",
-    "pages/commentDetail/commentDetail"
+    "pages/commentDetail/commentDetail",
+    "pages/login/login"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

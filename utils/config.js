@@ -4,7 +4,7 @@ const ipUrl= 'http://localhost:1314/'
 let servicePath = {
     goodsPage:ipUrl + 'goodsPage' , 
     explorePage:ipUrl+'explorePage',
-    addArticle:ipUrl+'addArticle',
+    userPage:ipUrl+'userPage',
     updateArticle:ipUrl+'updateArticle',
     getArticleList:ipUrl+'getArticleList',
     delArticle:ipUrl + 'delArticle/' ,

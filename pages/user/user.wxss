@@ -1,1 +1,126 @@
-/* pages/user/user.wxss */
+/* miniprogram/pages/user/user.wxss */
+
+page {
+    margin: 0;
+    padding: 0;
+    background-color: #F3F5F7;
+}
+
+.head {
+    position: relative;
+    width: 100%;
+    height: 240rpx;
+    display: flex;
+    box-sizing: border-box;
+    background-color: #DB4632;
+}
+
+.avatar-wrapper {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 50%;
+    margin-top: 40rpx;
+    margin-left: 40rpx;
+    margin-bottom: 40rpx;
+    border: 2px solid #E3796B;
+    background-color: #fff;
+    text-align: center;
+}
+
+.avatar {
+    width: 120rpx;
+    height: 120rpx;
+    padding-top: 20rpx;
+}
+
+.jd-bean-nums {
+    display: flex;
+    margin-top: 150rpx;
+    position: absolute;
+    left: 225rpx;
+}
+
+.jd-bean {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.bean {
+    color: #fff;
+    font-size: 25rpx;
+    padding-left: 15rpx;
+}
+
+.login-sign {
+    color: #fff;
+    line-height: 240rpx;
+    font-size: 32rpx;
+    padding-left: 20rpx;
+}
+
+.username {
+    color: #fff;
+    font-size: 32rpx;
+    letter-spacing: 2rpx;
+    padding-left: 20rpx;
+    padding-top: 80rpx;
+}
+
+.logout {
+    /* background-color: green; */
+    color: #EDAFA7;
+    font-size: 28rpx;
+    position: absolute;
+    right: 30rpx;
+    bottom: 30rpx;
+}
+
+.all_icon, .to-log {
+    width: 24rpx;
+    height: 24rpx;
+    position: absolute;
+    right: 10rpx;
+    padding-top: 10rpx;
+}
+
+.to-log {
+    top: 100rpx;
+}
+
+.options {
+    width: 750rpx;
+    /* height: 140rpx; */
+    background-color: #fff;
+    display: flex;
+    font-size: 28rpx;
+}
+
+.wrapper, .myorders {
+    flex: 1; /* 自适应 */
+    margin-top: 35rpx;
+    margin-bottom: 40rpx;
+    text-align: center;
+}
+
+.myorders {
+    border-left: 1px solid #EEEEEE;
+}
+
+.icons{
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.text {
+    padding-top: 15rpx;
+}
+
+.fc-items {
+    background-color: #fff;
+    font-size: 32rpx;
+    padding-top: 20rpx;
+    padding-left: 20rpx;
+    padding-bottom: 20rpx;
+    margin-top: 1px;
+}
+

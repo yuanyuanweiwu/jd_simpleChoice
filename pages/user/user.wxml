@@ -1,2 +1,45 @@
-<!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+
+<view class="head" bindtap="login" >
+  <!-- 头像 -->
+  <view class="avatar-wrapper">
+    <image class="avatar" src="../../assets/icons/not-log.png" />
+  </view>
+  <!-- 用户名 -->
+  <view class="{{loginFlag === 0 ? 'login-sign' : 'username'}}">{{tag}}</view>
+  <!-- 京豆数量 -->
+  <view wx:if="{{loginFlag === 1}}" class="jd-bean-nums">
+    <image class="jd-bean" src="../../assets/icons/jd-bean.png" />
+    <view class="bean">京豆{{bean}}</view>
+  </view>
+  <!-- 是否登录显示不同的图标 -->
+  <image wx:if="{{loginFlag === 0}}" class="to-log" src="../../assets/icons/detail-white.png" />
+  <view wx:if="{{loginFlag === 1}}" class="logout" catchtap="logout">退出登录</view>
+</view>
+<!-- 查看订单操作 -->
+<view class="options">
+  <block wx:for="{{options}}" wx:for-item="option" wx:key="option">
+    <view class="{{option.id === 4 ? 'myorders' : 'wrapper'}}" bindtap="showOptions" data-index="{{option.id}}">
+      <image class="icons" src="{{option.icon}}" />
+      <view class="text">{{option.name}}</view>
+    </view>
+  </block>
+</view>
+<!-- 底部四个功能 -->
+<view class="functions">
+  <view class="fc-items" bindtap="showAppointment">
+    我的预约
+    <image class="all_icon" src="../../assets/icons/detail.png" />
+  </view>
+  <view class="fc-items" bindtap="showDiscount">
+    我的优惠券
+    <image class="all_icon" src="../../assets/icons/detail.png" />
+  </view>
+  <view class="fc-items" bindtap="showFeedback">
+    反馈
+    <image class="all_icon" src="../../assets/icons/detail.png" />
+  </view>
+  <view class="fc-items" bindtap="showAbout">
+    关于
+    <image class="all_icon" src="../../assets/icons/detail.png" />
+  </view>
+</view>
