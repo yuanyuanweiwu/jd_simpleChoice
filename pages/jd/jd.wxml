@@ -1,0 +1,2 @@
+<!-- 自定义导航栏-->
+<navigationBar navbarData="{{navbarData}}"></navigationBar>

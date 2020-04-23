@@ -32,8 +32,21 @@ App({
         }
       }
     })
+    let menuButtonObject = wx.getMenuButtonBoundingClientRect();//胶囊按钮到顶部位置
+    //获取设备信息
+    wx.getSystemInfo({
+      success: (res) => {
+        console.log(res)
+        let statusBarHeight= res.statusBarHeight
+        let navTop =menuButtonObject.top
+        let navHeight=statusBarHeight+menuButtonObject.height+(navTop-statusBarHeight)*2//导航高度
+        this.globalData.height =navHeight
+        this.globalData.top =statusBarHeight
+      }
+    })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    height:0
   }
 })

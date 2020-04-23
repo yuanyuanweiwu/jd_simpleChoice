@@ -1,0 +1,14 @@
+{
+  "name": "jd_simplechoice",
+  "version": "1.0.0",
+  "description": "仿京东优选小程序 \r 数据接口 自启动json-server\r 原型由掘金一位老哥提供",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vant-weapp": "^0.5.28"
+  }
+}
