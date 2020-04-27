@@ -1,23 +1,23 @@
 <!-- index.wxml -->
-  <view wx:for="{{goods}}" wx:for-index="id" wx:for-item="item" class="contain"  wx:key="id" bindtap="goDetail" data-id="{{item._id}}">
-    <view class="mediabox_left">
-      <!-- 商品图片 -->
-      <image src="{{item.thumb}}" class="mediabox_thumb" />
-    </view>
-    <view class="mediabox_right">
-      <!-- 商品名称 -->
-      <view class="mediabox_title">{{item.title}}</view>
-      <!-- 商品价格 -->
-      <view class="mediabox_price">{{item.price}}</view>
-      <!-- 时间以及讨论 -->
-      <view class="mediabox_details">
-        <view class="mediabox_time">{{item.time}}</view>
-        <view class="mediabox_desc">
-          <image src="../../assets/icons/comment.png" class="comment_image"/>
-          <text>{{item.comment}}</text>
-          <image src="../../assets/icons/value.png" class="value_image"/>
-          <text>{{item.value}}</text>
-        </view>
+<view wx:for="{{goods}}" wx:for-index="id" wx:for-item="item" class="contain" wx:key="id" bindtap="goDetail" data-id="{{item._id}}">
+  <view class="mediabox_left">
+    <!-- 商品图片 -->
+    <image src="{{item.thumb}}" class="mediabox_thumb" />
+  </view>
+  <view class="mediabox_right">
+    <!-- 商品名称 -->
+    <view class="mediabox_title">{{item.title}}</view>
+    <!-- 商品价格 -->
+    <view class="mediabox_price">{{item.price}}</view>
+    <!-- 时间以及讨论 -->
+    <view class="mediabox_details">
+      <view class="mediabox_time">{{item.time}}</view>
+      <view class="mediabox_desc">
+        <image src="../../assets/icons/comment.png" class="comment_image" />
+        <text>{{item.comment}}</text>
+        <image src="../../assets/icons/value.png" class="value_image" />
+        <text>{{item.value}}</text>
       </view>
     </view>
   </view>
+</view>

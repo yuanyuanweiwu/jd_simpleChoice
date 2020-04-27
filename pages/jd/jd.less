@@ -1,0 +1,155 @@
+page {
+  background-color: #efeff4;
+  .swipper_header {
+    .swipper {
+      width: 100%;
+      height: 40vh;
+      .swiper_item {
+        image {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+  .title {
+    width: 100%;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-bottom: 1rpx solid #ddd;
+    position: relative;
+    padding-bottom: 30rpx;
+
+    .jd_goodsTitle {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 16rpx;
+      .jd_goodsPrice {
+        color: rgb(194, 10, 10);
+        font-size: 36rpx;
+        font-weight: 600;
+        .pricebefore {
+          font-size: 40rpx;
+        }
+      }
+      .jd_goodsShare {
+        .share_image {
+          width: 35rpx;
+          height: 35rpx;
+          display: block;
+        }
+        .share_btn {
+          background-color: #fff;
+          font-size: 20rpx;
+          padding-left: 0;
+          padding-right: 0;
+          &::after {
+            content: none;
+            border: none;
+          }
+        }
+      }
+    }
+    .title_bd {
+      .self_sell {
+        display: inline;
+        background-color: rgb(236, 57, 57);
+        color: #fff;
+        font-size: 26rpx;
+        padding: 2rpx 4rpx;
+        margin-right: 10rpx;
+        box-sizing: border-box;
+      }
+    }
+  }
+  .all {
+    width: 35rpx;
+    height: 35rpx;
+    position: absolute;
+    right: 30rpx;
+  }
+  .l_text {
+    color: #989a9b;
+    font-size: 32rpx;
+    padding-right: 25rpx;
+    min-width: 60rpx;
+  }
+  .discount_box {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 30rpx;
+    padding-top: 30rpx;
+    padding-bottom: 30rpx;
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    .discount {
+      background-color: rgb(236, 57, 57);
+      color: #fff;
+      font-size: 26rpx;
+    }
+
+    .discount_wrapper {
+      display: flex;
+    }
+  }
+  .card_wrapper {
+    padding-left: 30rpx;
+    background-color: #fff;
+    .discount_card {
+      width: 230rpx;
+      height: 120rpx;
+      padding-right: 20rpx;
+    }
+  }
+  .promote_box {
+    border-top: 1px solid #ddd;
+    background-color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 30rpx;
+    padding-left: 30rpx;
+    padding-bottom: 10rpx;
+    margin-bottom: 30rpx;
+    position: relative;
+    display: flex;
+    font-size: 32rpx;
+    border-bottom: 1px solid #ddd;
+    .right_wrapper {
+      display: flex;
+      flex-direction: column;
+      font-size: 32rpx;
+      .enjoy {
+        display: inline-block;
+        padding-bottom: 30rpx;
+      }
+      .tab_wrapper {
+        box-sizing: border-box;
+        display: flex;
+        margin-bottom: 20rpx;
+        .tabs {
+          max-height: 30rpx;
+          display: inline;
+          font-size: 20rpx;
+          color: #df443b;
+          padding: 5rpx;
+          margin-right: 10rpx;
+          border: 1px solid #df443b;
+        }
+        /* 促销卡片没展示出来时 */
+        .describe {
+          max-width: 400rpx;
+          /* 超出两行打点 */
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          overflow: hidden;
+        }
+        .text_show {
+          max-width: 400rpx;
+        }
+      }
+    }
+  }
+}

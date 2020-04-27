@@ -69,4 +69,14 @@ Page({
       },
     };
   },
+  defaultTap(){
+    wx.navigateTo({
+      url: '/pages/jd/jd?id'+this.data.id,
+      success: (result)=>{
+        
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  }
 });

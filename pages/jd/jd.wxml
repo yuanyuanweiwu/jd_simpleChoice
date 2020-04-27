@@ -1,2 +1,72 @@
 <!-- 自定义导航栏-->
 <navigationBar navbarData="{{navbarData}}"></navigationBar>
+<scroll-view scroll-y="true" scroll-top="{{scrollTop}}" bindScroll="scroll" style="position: absolute; left: 0; top:0; bottom: 0;">
+  <!--轮播图-->
+  <view class="swipper_header" style="margin-top:{{height}}px">
+    <swiper class="swipper" indicator-dots="true" indicator-color="rgba(0,0,0,.3)" autoplay="true" circular="true" current="0" current-item-id="" interval="5000" duration="1000">
+      <block wx:for="{{imgList}}" wx:for-item="item" wx:for-index="id">
+        <swiper-item class="swiper_item" bindtap="bigImage" data-index="{{index}}">
+          <image src="{{item}}" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!--商品价格标题-->
+  <view class="title">
+    <view class="jd_goodsTitle">
+      <view class="jd_goodsPrice">
+        ¥
+        <text class="pricebefore">{{ price_before_dot}}</text>.{{price_after_dot}}
+      </view>
+      <view class="jd_goodsShare">
+        <image src="../../assets/icons/share.png" class="share_image" />
+        <button class="share_btn" open-type="share" plain="{{false}}" size="mini">分享</button>
+      </view>
+    </view>
+    <!--商品标题-->
+    <view class="title_bd">
+      <view class="self_sell" wx:if="{{self_sell}}">自营</view>
+      <text class="goods_title">{{currData.title}}</text>
+    </view>
+  </view>
+  <!--领券-->
+  <view class="discount_box" bindtap="showDiscount">
+    <view class="l_text">领券</view>
+    <view class="discount_wrapper">
+      <view class="discount" wx:if="{{!discountShow}}">满45减20</view>
+    </view>
+    <!-- 当优惠券不显示时 -->
+    <image class="all" src="../../assets/icons/down.png" wx:if="{{!discountShow}}"></image>
+    <image class="all" src="../../assets/icons/up.png" wx:if="{{discountShow}}"></image>
+  </view>
+  <!-- 优惠券卡片 -->
+  <view class="card_wrapper">
+    <!-- 当优惠券显示但没有领取时 bindtap显示领过之后的 -->
+    <image class="discount_card" wx:if="{{discountShow && !isGet}}" bindtap="get_discount" src="../../assets/images/discount_not_get.png"></image>
+    <image class="discount_card" wx:if="{{discountShow && isGet}}" src="../../assets/images/discount_getted.png"></image>
+  </view>
+  <!-- 促销 -->
+  <view class="promote_box" bindtap="showPromote">
+    <view class="l_text">促销</view>
+    <view class="right_wrapper">
+      <!-- 当promote展示出来的时候显示 -->
+      <view class="enjoy" wx:if="{{promoteShow}}">可享受以下优惠</view>
+      <view class="tab_wrapper">
+        <view class="tabs">跨自营/店铺满减</view>
+        <view class="{{promoteShow?'text_show':'describe'}}">每满99元,可减10元，最多可减200元</view>
+      </view>
+      <view class="tab_wrapper">
+        <view class="tabs">多买优惠</view>
+        <view class="{{promoteShow?'text_show':'describe'}}">满2件，总件打8折</view>
+      </view>
+      <image class="all" src="../../assets/icons/down.png" wx:if="{{!promoteShow}}"></image>
+      <image class="all" src="../../assets/icons/up.png" wx:if="{{promoteShow}}"></image>
+    </view>
+  </view>
+  <!--选择版本-->
+  <view class="choose_box" >
+      <view>
+          
+      </view>
+  </view>
+</scroll-view>
