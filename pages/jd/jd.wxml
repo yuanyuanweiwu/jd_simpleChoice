@@ -104,7 +104,7 @@
   </view>
   <view class="num_select">
     <view class="num_text">数量</view>
-    <van-stepper class="selector" value="{{ num }}" integer bind:change="onChange" bind:minus="minus" />
+    <vant-stepper class="selector" value="{{ num }}" integer bind:change="onChange" bind:minus="minus" />
     <view class="minimum" wx:if="{{minShow}}">(最少一件)</view>
   </view>
   <view class='bottom'>
