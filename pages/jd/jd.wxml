@@ -64,9 +64,51 @@
     </view>
   </view>
   <!--选择版本-->
-  <view class="choose_box" >
-      <view>
-          
+  <view class="choose_box" bindtap="showModal">
+    <text class="l_text">已选</text>
+    <view class="choose_wrapper">
+      <view class="choose_value">
+        {{choose_value}}
       </view>
+      <text class="follow" wx:if="{{num>0}}">{{num}}件</text>
+      <image src="../../assets/icons/more.png" class="more" />
+    </view>
   </view>
 </scroll-view>
+
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <view class="pop_head">
+    <!-- 图片 -->
+    <image class="pop_avatar" src="{{imgList[0]}}"></image>
+    <!-- 价格 -->
+    <view class="pop_price">
+      <view class="pop_price">
+        ¥
+        <text class="pop_big_Red">{{price_before_dot}}.</text> {{price_after_dot}}
+      </view>
+    </view>
+  </view>
+  <view class="pop_options">
+    <view class="type">版本</view>
+    <view class="type_option">
+      <view class="option {{currentOption === 0?'seleted':''}}" bindtap="select" data-id="0" data-type="版本一">
+        版本一
+      </view>
+      <view class="option {{currentOption === 1?'seleted':''}}" bindtap="select" data-id="1" data-type="版本二">
+        版本二
+      </view>
+      <view class="option {{currentOption === 2?'seleted':''}}" bindtap="select" data-id="2" data-type="版本三">
+        版本三
+      </view>
+    </view>
+  </view>
+  <view class="num_select">
+    <view class="num_text">数量</view>
+    <van-stepper class="selector" value="{{ num }}" integer bind:change="onChange" bind:minus="minus" />
+    <view class="minimum" wx:if="{{minShow}}">(最少一件)</view>
+  </view>
+  <view class='bottom'>
+    <view class="animation-reset" bindtap="addCart">加入购物车</view>
+    <view class="animation-button" bindtap="buy">立即购买</view>
+  </view>
+</view>

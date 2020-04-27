@@ -1,67 +1,92 @@
 // pages/jd/jd.js
 import util from "../../utils/util";
 import servicePath from "./../../utils/config";
-const app = getApp()
+const app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     navbarData: {
       showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
-      title: '商品详情', //导航栏 中间的标题,
+      title: "商品详情", //导航栏 中间的标题,
     },
-    height:app.globalData.height,
-    goods:[],//所有商品信息,
-    currData:{},//当前商品,
-    price_before_dot: '', // 价格小数点前的数字
-    price_after_dot: '', // 价格小数点之后的数字
+    height: app.globalData.height,
+    goods: [], //所有商品信息,
+    currData: {}, //当前商品,
+    price_before_dot: "", // 价格小数点前的数字
+    price_after_dot: "", // 价格小数点之后的数字
     imgList: [], // 所有图片的url地址
     self_sell: false, // 是否为自营店铺
     discountShow: false, // 是否显示优惠券卡片
     isGet: false, // 是否领取了优惠券
+    choose_value: "版本一",
+    num: 1,
+    showModalStatus: false,
   },
   /**
    * 显示大图
    */
-  bigImage(e){
-   let index=e.currentTarget.dataset.index
-   let imgList=this.data.imgList
-   wx.previewImage({
-     current: imgList[index],
-     urls: imgList,
-   });
+  bigImage(e) {
+    let index = e.currentTarget.dataset.index;
+    let imgList = this.data.imgList;
+    wx.previewImage({
+      current: imgList[index],
+      urls: imgList,
+    });
   },
   /**
    * 显示优惠
    */
-  showDiscount(){
+  showDiscount() {
     this.setData({
-      discountShow:!this.data.discountShow
-    })
+      discountShow: !this.data.discountShow,
+    });
   },
   /**
    * 显示促销
    */
-  showPromote() { // 显示和隐藏促销卡片
+  showPromote() {
+    // 显示和隐藏促销卡片
     this.setData({
-      promoteShow: !this.data.promoteShow
-    })
+      promoteShow: !this.data.promoteShow,
+    });
+  },
+  /**显示modal */
+  showModal() {
+  let animation = wx.createAnimation({
+      duration: 400,
+      timingFunction: "linear",
+    });
+    this.animation = animation;
+    animation.translateY(600).step();
+    this.setData({
+      animationData: animation.export(),
+      showModalStatus: true,
+    });
+
+    setTimeout(function() {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
+      })
+    }.bind(this), 100);
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    let id=options.id
+    let id = options.id;
     util.request(servicePath.goodsPage).then((res) => {
       const goods = res.data.goods;
-      const currData=goods.find(item=>item._id===id)
-      let split=currData.plain_price.split('.')
-      let self_sell=false
-      if (currData.store.indexOf("京东") >= 0 || currData.store.indexOf("自营") >= 0) {
-        self_sell = true
+      const currData = goods.find((item) => item._id === id);
+      let split = currData.plain_price.split(".");
+      let self_sell = false;
+      if (
+        currData.store.indexOf("京东") >= 0 ||
+        currData.store.indexOf("自营") >= 0
+      ) {
+        self_sell = true;
       }
       this.setData({
         goods,
@@ -69,7 +94,7 @@ Page({
         imgList: currData.images,
         price_before_dot: split[0],
         price_after_dot: split[1],
-        self_sell
+        self_sell,
       });
     });
   },
@@ -77,44 +102,32 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-  },
+  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function () {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
-  },
+  onUnload: function () {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
-  },
+  onPullDownRefresh: function () {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
-  },
+  onReachBottom: function () {},
 
   /**
    * 用户点击右上角分享
@@ -122,11 +135,11 @@ Page({
   onShareAppMessage: function () {
     return {
       title: this.data.currData.title,
-      path: 'pages/jd/jd?id' + this.data.id,
+      path: "pages/jd/jd?id" + this.data.id,
       imageUrl: this.data.imgList[0], // 设置分享的时候显示的图片(大图的第一张)
       success: function () {
-        console.log('分享成功')
-      }
-    }
-  }
-})
+        console.log("分享成功");
+      },
+    };
+  },
+});

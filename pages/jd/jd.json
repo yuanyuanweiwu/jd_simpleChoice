@@ -5,6 +5,6 @@
   "navigationStyle": "custom",
   "usingComponents": {
     "navigationBar":"../../components/navigationBar/index",
-    "vant-stepper":"@vant/weapp/stepper/index"
+    "vant-stepper":"../../miniprogram_npm/vant-weapp/stepper/index"
   }
 }
