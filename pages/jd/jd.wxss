@@ -281,3 +281,179 @@ page .choose_box .choose_wrapper .more {
   width: 34rpx;
   height: 34rpx;
 }
+page .send_box {
+  width: 750rpx;
+  position: relative;
+  padding-top: 30rpx;
+  padding-left: 30rpx;
+  padding-bottom: 30rpx;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+  display: flex;
+}
+page .send_box .right_wrapper {
+  display: flex;
+  font-size: 32rpx;
+  flex-direction: column;
+}
+page .send_box .right_wrapper .address_wrapper {
+  display: flex;
+}
+page .send_box .right_wrapper .address_wrapper .mark {
+  width: 55rpx;
+  height: 55rpx;
+  margin-top: -5rpx;
+}
+page .send_box .right_wrapper .hint {
+  color: #989a9b;
+  max-width: 630rpx;
+}
+page .weight_box {
+  position: relative;
+  padding-left: 30rpx;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+  font-size: 32rpx;
+}
+page .options {
+  padding: 20rpx 50rpx 20rpx 30rpx;
+  font-size: 28rpx;
+  color: #989a9b;
+  line-height: 2;
+  padding-bottom: 30rpx;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  flex-wrap: wrap;
+}
+page .options icon {
+  padding-right: 15rpx;
+}
+page .options text {
+  padding-right: 20rpx;
+}
+page .detail {
+  margin-bottom: 100rpx;
+}
+page .detail .imageList {
+  width: 100%;
+  background-color: #fff;
+}
+page .detail .imageList image {
+  width: 100%;
+  margin-bottom: 10rpx;
+}
+page .detail .imageList image:last-child {
+  margin-bottom: 0;
+}
+page .modal_shadow {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+page .goTop {
+  position: fixed;
+  bottom: 200rpx;
+  right: 20rpx;
+  width: 65rpx;
+  height: 65rpx;
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+  background-color: #fff;
+  text-align: center;
+}
+page .goTop .icon_goTop {
+  width: 40rpx;
+  height: 40rpx;
+  padding-top: 12rpx;
+  padding-left: 2rpx;
+}
+page .goodsaction {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  background-color: #fff;
+  padding-left: 30rpx;
+  height: 100rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+page .goodsaction .contact_wrapper {
+  width: 134rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+page .goodsaction .contact_wrapper .seller {
+  padding-left: 10rpx;
+}
+page .goodsaction .contact_wrapper .text {
+  font-size: 20rpx;
+  width: 100%;
+}
+page .goodsaction .cart_wrapper {
+  width: 240rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+page .goodsaction .cart_wrapper .cart {
+  padding-left: 5rpx;
+}
+page .goodsaction .cart_wrapper .text {
+  font-size: 20rpx;
+}
+page .goodsaction .cart_wrapper .around {
+  font-size: 20rpx;
+  position: absolute;
+  top: 10rpx;
+  right: 40rpx;
+  z-index: 99;
+  background-color: #fff;
+  height: 25rpx;
+  width: 25rpx;
+  text-align: center;
+  line-height: 25rpx;
+  color: #df443b;
+  border: 1px solid #df443b;
+  border-radius: 100%;
+}
+page .goodsaction .btn_wrapper {
+  display: flex;
+  width: 100%;
+}
+page .goodsaction .btn_wrapper .btn {
+  width: 50%;
+  font-size: 28rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+page .goodsaction .btn_wrapper .add_cart {
+  background-color: #f2ae3c;
+}
+page .goodsaction .btn_wrapper .buy {
+  background-color: #df3f24;
+}
+page .seller,
+page .cart {
+  width: 40rpx;
+  height: 40rpx;
+  /* background-color: #000; */
+}

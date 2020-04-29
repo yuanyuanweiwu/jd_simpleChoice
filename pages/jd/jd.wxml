@@ -1,6 +1,6 @@
 <!-- 自定义导航栏-->
 <navigationBar navbarData="{{navbarData}}"></navigationBar>
-<scroll-view scroll-y="true" scroll-top="{{scrollTop}}" bindScroll="scroll" style="position: absolute; left: 0; top:0; bottom: 0;">
+<scroll-view scroll-y="true" scroll-top="{{scrollTop}}" bindscroll="scroll" style="position: absolute; left: 0; top:0; bottom: 0;">
   <!--轮播图-->
   <view class="swipper_header" style="margin-top:{{height}}px">
     <swiper class="swipper" indicator-dots="true" indicator-color="rgba(0,0,0,.3)" autoplay="true" circular="true" current="0" current-item-id="" interval="5000" duration="1000">
@@ -74,7 +74,56 @@
       <image src="../../assets/icons/more.png" class="more" />
     </view>
   </view>
+    <!-- 送至 -->
+  <view class="send_box">
+    <view class="l_text">送至</view>
+    <view class="right_wrapper">
+      <view class="address_wrapper">
+        <image class="mark" src="../../assets/icons/mark.png"></image>
+        <view class="address">北京 朝阳区 三环以内</view>
+      </view>
+      <view class="hint">现货，现在至明天23:00前下单，预计02月03日(周一)送达，受全国道路交通影响，您的订单会延迟派送，请您耐心等待</view>
+    </view>
+  </view>
+  <!-- 一些提示选项 -->
+  <view class="options">
+    <view class="option_wrap">
+      <icon type="success" size="10" color="#DE554F"></icon>
+      <text>京东发货&售后</text>
+    </view>
+    <view class="option_wrap">
+      <icon type="success" size="10" color="#DE554F"></icon>
+      <text>99元免基础配送费(20kg内)</text>
+    </view>
+    <view class="option_wrap">
+      <icon type="success" size="10" color="#DE554F"></icon>
+      <text>自提</text>
+    </view>
+    <view class="option_wrap">
+      <icon type="success" size="10" color="#DE554F"></icon>
+      <text>次日达</text>
+    </view>
+    <view class="option_wrap">
+      <icon type="success" size="10" color="#DE554F"></icon>
+      <text>7天无理由退货(拆封后不支持)</text>
+    </view>
+  </view>
+  <!--商品图片-->
+  <view class="detail">
+  <block wx:for="{{infos}}" wx:for-item="item" >
+  <view class="imageList">
+    <image  class="info" src="{{item}}" mode="widthFix"/>
+  </view>
+  </block>
+  </view>
+  <!--返回顶部-->
+  <view class="goTop" bindtap="goTop" wx:if="{{floorstatus}}">
+    <image class="icon_goTop" src="../../assets/icons/back_to_top.png"></image>
+  </view>
 </scroll-view>
+
+<!--遮罩层点击返回-->
+<view class='modal_shadow' bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
 
 <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
   <view class="pop_head">
@@ -110,5 +159,22 @@
   <view class='bottom'>
     <view class="animation-reset" bindtap="addCart">加入购物车</view>
     <view class="animation-button" bindtap="buy">立即购买</view>
+  </view>
+</view>
+
+<!-- 底部固定的栏目 -->
+<view class="goodsaction">
+  <view class="contact_wrapper" bindtap="to_seller">
+    <image class="seller" src="../../assets/icons/communication_icon.png"></image>
+    <text class="text">联系客服</text>
+  </view>
+  <view class="cart_wrapper" bindtap="to_cart">
+    <image class="cart" src="../../assets/icons/add_cart.png"></image>
+    <text class="text">购物车</text>
+    <text class="around" wx:if="{{allNum != 0}}">{{allNum}}</text>
+  </view>
+  <view class="btn_wrapper">
+    <button class="btn add_cart" bindtap="showModel">加入购物车</button>
+    <button class="btn buy" bindtap="showModel">立即购买</button>
   </view>
 </view>

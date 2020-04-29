@@ -17,12 +17,15 @@ Page({
     price_before_dot: "", // 价格小数点前的数字
     price_after_dot: "", // 价格小数点之后的数字
     imgList: [], // 所有图片的url地址
+    infos: [], //详情图片集合
     self_sell: false, // 是否为自营店铺
     discountShow: false, // 是否显示优惠券卡片
     isGet: false, // 是否领取了优惠券
     choose_value: "版本一",
     num: 1,
     showModalStatus: false,
+    floorstatus:false,
+    scrollTop:0
   },
   /**
    * 显示大图
@@ -54,7 +57,7 @@ Page({
   },
   /**显示modal */
   showModal() {
-  let animation = wx.createAnimation({
+    let animation = wx.createAnimation({
       duration: 400,
       timingFunction: "linear",
     });
@@ -65,13 +68,60 @@ Page({
       showModalStatus: true,
     });
 
-    setTimeout(function() {
-      animation.translateY(0).step()
-      this.setData({
-        animationData: animation.export()
-      })
-    }.bind(this), 100);
+    var timer1 = setTimeout(
+      function () {
+        animation.translateY(0).step();
+        this.setData({
+          animationData: animation.export(),
+        });
+      }.bind(this),
+      100
+    );
+    this.setData({
+      timer1,
+    });
   },
+  /**隐藏modal */
+  hideModal() {
+    let animation = wx.createAnimation({
+      duration: 400,
+      timingFunction: "linear",
+    });
+    this.animation = animation;
+    animation.translateY(300).step();
+    this.setData({
+      animationData: animation.export(),
+    });
+    var timer2 = setTimeout(
+      function () {
+        animation.translateY(0).step();
+        this.setData({
+          animationData: animation.export(),
+          showModalStatus: false,
+        });
+      }.bind(this),
+      300
+    );
+    this.setData({
+      timer2,
+    });
+  },
+  scroll(e){
+     let floorstatus=false
+     if (e.detail.scrollTop>300) {
+       floorstatus=true
+     }
+     this.setData({
+      floorstatus
+     })
+  },
+  /**回到顶部 */
+  goTop(){
+    this.setData({
+      scrollTop:0
+    })
+  }
+  ,
   /**
    * 生命周期函数--监听页面加载
    */
@@ -91,6 +141,7 @@ Page({
       this.setData({
         goods,
         currData,
+        infos: currData.infos,
         imgList: currData.images,
         price_before_dot: split[0],
         price_after_dot: split[1],
@@ -117,7 +168,10 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {},
+  onUnLoad() {
+    clearTimeOut(this.data.timer1);
+    clearTimeOut(this.data.timer2);
+  },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
