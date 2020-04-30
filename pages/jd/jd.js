@@ -24,8 +24,11 @@ Page({
     choose_value: "版本一",
     num: 1,
     showModalStatus: false,
-    floorstatus:false,
-    scrollTop:0
+    floorstatus: false,
+    scrollTop: 0,
+    currentOption: 0, //默认选择版本
+    choose_value: "版本一",
+    allNum: 0,
   },
   /**
    * 显示大图
@@ -106,22 +109,92 @@ Page({
       timer2,
     });
   },
-  scroll(e){
-     let floorstatus=false
-     if (e.detail.scrollTop>300) {
-       floorstatus=true
-     }
-     this.setData({
-      floorstatus
-     })
+  scroll(e) {
+    let floorstatus = false;
+    if (e.detail.scrollTop > 300) {
+      floorstatus = true;
+    }
+    this.setData({
+      floorstatus,
+    });
   },
   /**回到顶部 */
-  goTop(){
+  goTop() {
     this.setData({
-      scrollTop:0
+      scrollTop: 0,
+    });
+  },
+  /**选择类型 */
+  select(e) {
+    let currType = e.currentTarget.dataset.type;
+    let currId = e.currentTarget.dataset.id;
+    this.setData({
+      currentOption: parseInt(currId),
+      choose_value: currType,
+    });
+  },
+  /**加入购物车 */
+  addCart() {
+    this.hideModal()
+    // 真正实现添加购物车的部分
+    let cartData = wx.getStorageSync("cart") || [];
+    let count = 0;
+    cartData.map((val) => {
+      if (val.title === this.data.currData.title && val.type === this.data.choose_value) {
+        val.num += this.data.num;
+        count++; // 标记是否有找到相同的商品
+      }
+    });
+    if (count === 0) {
+      // 没找到 添加新的商品信息进购物车
+      let data = {
+        id:  this.data.currData._id,
+        title:  this.data.currData.title,
+        weight: "0.78kg",
+        type: this.data.choose_value,
+        num: this.data.num,
+        price:  this.data.currData.plain_price,
+        img:  this.data.currData.thumb,
+        discount: 20,
+        select: true, // 是否选中，方便后续计算总价
+      };
+      cartData.push(data);
+    }
+    // 刷新购物车图标上的数量
+    let allNum = 0;
+    cartData.forEach((val) => {
+      allNum += val.num;
+    });
+    console.log(allNum, "num");
+    this.setData({
+      allNum,
+    });
+    wx.setStorage({
+      key: "cart",
+      data: cartData,
+    });
+  },
+  change_num(){
+    let cartgoods = wx.getStorageSync('cart') || [];
+    let allNum = 0
+    cartgoods.forEach(val => {
+      allNum += val.num
+    });
+    this.setData({
+      allNum
     })
-  }
-  ,
+  },
+  onChange(e) {
+    let num = e.detail;
+    let minShow = false;
+    if (num === 1) {
+      minShow = true;
+    }
+    this.setData({
+      num,
+      minShow,
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -158,7 +231,9 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {},
+  onShow: function () {
+    this.change_num()
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

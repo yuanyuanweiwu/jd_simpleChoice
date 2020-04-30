@@ -16,7 +16,6 @@ Page({
    */
   onLoad: function (options) {
     let id = options.id;
-
     let goods = {};
     let comments = [];
     util.request(servicePath.goodsPage).then((res) => {
@@ -71,7 +70,7 @@ Page({
   },
   defaultTap(){
     wx.navigateTo({
-      url: '/pages/jd/jd?id'+this.data.id,
+      url: '/pages/jd/jd?id='+this.data.id,
       success: (result)=>{
         
       },
